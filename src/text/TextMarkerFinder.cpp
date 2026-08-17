@@ -146,12 +146,14 @@ factories[name] = factory;
 
 void registerXMLTextMarkerFinder ();
 void registerJsonTextMarkerFinder ();
+void registerYamlTextMarkerFinder ();
 
 static void initTextMarkerFinderFactories () {
 TextMarkerFinder::Register("regex", [](auto&p){ return new RegexTextMarkerFinder(p); });
 TextMarkerFinder::Register("markdown", [](auto&p){  return new MarkdownTextMarkerFinder(); });
 registerXMLTextMarkerFinder();
 registerJsonTextMarkerFinder();
+registerYamlTextMarkerFinder();
 }
 
 TextMarkerFinder* TextMarkerFinder::Create (const std::string& name, Properties& props) {
