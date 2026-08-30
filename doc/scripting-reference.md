@@ -79,7 +79,6 @@ currentDocument | Document | true | false | The currently active document
 documents | table | true | false | Table of all documents currently opened in the application
 locale | string | true | false | current language of the application
 userDataDirectory | string | true | false | directory where user settings are stored
-userLocalDataDirectory | string | true | false | directory where local user settings are stored
 
 ## CommandEvent
 Event for all command-based simple events
@@ -1328,6 +1327,138 @@ id | integer | true | false | ID of the event generated
 interval | integer | true | false | interval of the timer in miliseconds
 oneShot | boolean | true | false | tells if the timer is periodic (false) or one shot (true).
 running | boolean | true | false | tells if the timer is currently running (true) or stopped (false).
+
+## Tool
+Type representing a tool
+
+### tool:bind (handler)
+Bind an event handler to this item
+
+**Parameters:**
+* handler: function: the event handler to bind to this item
+
+**Returns:**
+* handler: an object allowing to unbind the event handler later on
+
+### tool:check (checked=true)
+Checks or unchecks the checkbox of this item
+
+**Parameters:**
+* checked: boolean: The state checked or unchecked to apply
+
+### tool:enable (enabled=true)
+Enable or disable this item
+
+**Parameters:**
+* enabled: boolean: the enabled or disabled state to apply
+
+### Properties
+Name | Type | Readable | Writable | Description
+-----|-----|-----|-----|-----
+checkable | boolean | true | false | Tells if this item is checkable, i.e. if it has a checkbox
+checked | boolean | true | true | Tells if this item is currently checked
+enabled | boolean | true | true | Tells if this item is currently enabled
+id | integer | true | false | unique identifier of this item
+label | string | true | true | the text label of this item
+longHelpString | string | true | true | the help string associated with this item. The help string is displayed in the status bar while the item is highlighted.
+name | string | true | true | internal name of this tool
+radio | boolean | true | false | Tells if this item is checkable and if it's a radio button
+separator | boolean | true | false | Tells if this item is a separator
+shortHelpString | string | true | true | the help string associated with this item. The help string is displayed as a tooltip when the mouse is over the tool
+toolbar | ToolBar | true | true | the parent toolbar of this item
+
+## ToolBar
+Type representing the tool bar of a document window or tab
+
+### toolBar:add (label, icon, disabledIcon, shortHelpString, longHelpString, name, position=0, id=0, checkable=false, radio=false, checked=false)
+Add a new tool to this tool bar
+
+**Parameters:**
+* label: string: text label of the item
+* icon: string: icon file
+* disabledIcon: string: icon file for disabled state
+* shortHelpString: string: the help string displayed in a tooltip when the item is overed
+* longHelpString: string: the help string displayed on the status bar when the item is highlighted
+* name: string: internal tool name
+* position: integer: position of the item inside the toolbar (1-based)
+* id: integer: unique identifier of the item (0 = automatically allocate any ID)
+* checkable: boolean: tells if the menu item is checkable, i.e. has a checkbox that can be checked
+* radio: boolean: Tells if this menu item is a radio button item
+* checked: boolean: Tells if this menu item is checked
+
+**Returns:**
+* Tool: the item created and added in this tool bar
+
+### toolBar:addSeparator (position=0)
+add a separator to this tool bar
+
+**Parameters:**
+* position: integer: position of the item in the tool bar (1-based)
+
+**Returns:**
+* Tool: item created and added in this tool bar
+
+### toolBar:addStretchableSeparator (position=0)
+add a stretchable separator to this tool bar
+
+**Parameters:**
+* position: integer: position of the item in the tool bar (1-based)
+
+**Returns:**
+* Tool: item created and added in this tool bar
+
+### toolBar:check (id, checked=true)
+Check or uncheck a tool by its ID
+
+**Parameters:**
+* id: integer: tool ID
+* checked: boolean: state checked or unchecked to apply
+
+### toolBar:enable (id, enable=true)
+Enable or disable a tool by its ID
+
+**Parameters:**
+* id: integer: item ID
+* enable: boolean: enabled or disabled state to apply
+
+### toolBar:getTool (indexOrID)
+fetch a tool from this tool bar
+
+**Parameters:**
+* indexOrID: integer: ID or 1-based index of the tool to fetch
+
+**Returns:**
+* Tool: the requested tool 
+
+### toolBar:getToolCount ()
+Return the number of menus present in this tool bar
+
+**Returns:**
+* integer: the number of menus in this tool bar
+
+### toolBar:isChecked (id)
+Checks the checked state of a menu item by its ID
+
+**Parameters:**
+* id: integer: ID of the menu item
+
+**Returns:**
+* boolean: checked state
+
+### toolBar:isEnabled (id)
+Checks if a tool is enabled or disabled by its ID
+
+**Parameters:**
+* id: integer: item ID
+
+**Returns:**
+* boolean: enabled or disabled state
+
+### toolBar:remove (index)
+Remove a menu from this tool bar
+
+**Parameters:**
+* index: integer: ID or 1-based index of the tool to remove
 
 ## WebRequest
 Class allowing to make web requests

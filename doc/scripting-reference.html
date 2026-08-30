@@ -292,13 +292,6 @@ front) if it's already open</p>
 <td>false</td>
 <td>directory where user settings are stored</td>
 </tr>
-<tr class="even">
-<td>userLocalDataDirectory</td>
-<td>string</td>
-<td>true</td>
-<td>false</td>
-<td>directory where local user settings are stored</td>
-</tr>
 </tbody>
 </table>
 <h2 id="commandevent">CommandEvent</h2>
@@ -2690,6 +2683,237 @@ start</li>
 </tr>
 </tbody>
 </table>
+<h2 id="tool">Tool</h2>
+<p>Type representing a tool</p>
+<h3 id="toolbind-handler">tool:bind (handler)</h3>
+<p>Bind an event handler to this item</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>handler: function: the event handler to bind to this item</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>handler: an object allowing to unbind the event handler later
+on</li>
+</ul>
+<h3 id="toolcheck-checkedtrue">tool:check (checked=true)</h3>
+<p>Checks or unchecks the checkbox of this item</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>checked: boolean: The state checked or unchecked to apply</li>
+</ul>
+<h3 id="toolenable-enabledtrue">tool:enable (enabled=true)</h3>
+<p>Enable or disable this item</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>enabled: boolean: the enabled or disabled state to apply</li>
+</ul>
+<h3 id="properties-13">Properties</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Readable</th>
+<th>Writable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>checkable</td>
+<td>boolean</td>
+<td>true</td>
+<td>false</td>
+<td>Tells if this item is checkable, i.e. if it has a checkbox</td>
+</tr>
+<tr class="even">
+<td>checked</td>
+<td>boolean</td>
+<td>true</td>
+<td>true</td>
+<td>Tells if this item is currently checked</td>
+</tr>
+<tr class="odd">
+<td>enabled</td>
+<td>boolean</td>
+<td>true</td>
+<td>true</td>
+<td>Tells if this item is currently enabled</td>
+</tr>
+<tr class="even">
+<td>id</td>
+<td>integer</td>
+<td>true</td>
+<td>false</td>
+<td>unique identifier of this item</td>
+</tr>
+<tr class="odd">
+<td>label</td>
+<td>string</td>
+<td>true</td>
+<td>true</td>
+<td>the text label of this item</td>
+</tr>
+<tr class="even">
+<td>longHelpString</td>
+<td>string</td>
+<td>true</td>
+<td>true</td>
+<td>the help string associated with this item. The help string is
+displayed in the status bar while the item is highlighted.</td>
+</tr>
+<tr class="odd">
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>true</td>
+<td>internal name of this tool</td>
+</tr>
+<tr class="even">
+<td>radio</td>
+<td>boolean</td>
+<td>true</td>
+<td>false</td>
+<td>Tells if this item is checkable and if it's a radio button</td>
+</tr>
+<tr class="odd">
+<td>separator</td>
+<td>boolean</td>
+<td>true</td>
+<td>false</td>
+<td>Tells if this item is a separator</td>
+</tr>
+<tr class="even">
+<td>shortHelpString</td>
+<td>string</td>
+<td>true</td>
+<td>true</td>
+<td>the help string associated with this item. The help string is
+displayed as a tooltip when the mouse is over the tool</td>
+</tr>
+<tr class="odd">
+<td>toolbar</td>
+<td>ToolBar</td>
+<td>true</td>
+<td>true</td>
+<td>the parent toolbar of this item</td>
+</tr>
+</tbody>
+</table>
+<h2 id="toolbar">ToolBar</h2>
+<p>Type representing the tool bar of a document window or tab</p>
+<h3
+id="toolbaradd-label-icon-disabledicon-shorthelpstring-longhelpstring-name-position0-id0-checkablefalse-radiofalse-checkedfalse">toolBar:add
+(label, icon, disabledIcon, shortHelpString, longHelpString, name,
+position=0, id=0, checkable=false, radio=false, checked=false)</h3>
+<p>Add a new tool to this tool bar</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>label: string: text label of the item</li>
+<li>icon: string: icon file</li>
+<li>disabledIcon: string: icon file for disabled state</li>
+<li>shortHelpString: string: the help string displayed in a tooltip when
+the item is overed</li>
+<li>longHelpString: string: the help string displayed on the status bar
+when the item is highlighted</li>
+<li>name: string: internal tool name</li>
+<li>position: integer: position of the item inside the toolbar
+(1-based)</li>
+<li>id: integer: unique identifier of the item (0 = automatically
+allocate any ID)</li>
+<li>checkable: boolean: tells if the menu item is checkable, i.e. has a
+checkbox that can be checked</li>
+<li>radio: boolean: Tells if this menu item is a radio button item</li>
+<li>checked: boolean: Tells if this menu item is checked</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>Tool: the item created and added in this tool bar</li>
+</ul>
+<h3 id="toolbaraddseparator-position0">toolBar:addSeparator
+(position=0)</h3>
+<p>add a separator to this tool bar</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>position: integer: position of the item in the tool bar
+(1-based)</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>Tool: item created and added in this tool bar</li>
+</ul>
+<h3
+id="toolbaraddstretchableseparator-position0">toolBar:addStretchableSeparator
+(position=0)</h3>
+<p>add a stretchable separator to this tool bar</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>position: integer: position of the item in the tool bar
+(1-based)</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>Tool: item created and added in this tool bar</li>
+</ul>
+<h3 id="toolbarcheck-id-checkedtrue">toolBar:check (id,
+checked=true)</h3>
+<p>Check or uncheck a tool by its ID</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>id: integer: tool ID</li>
+<li>checked: boolean: state checked or unchecked to apply</li>
+</ul>
+<h3 id="toolbarenable-id-enabletrue">toolBar:enable (id,
+enable=true)</h3>
+<p>Enable or disable a tool by its ID</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>id: integer: item ID</li>
+<li>enable: boolean: enabled or disabled state to apply</li>
+</ul>
+<h3 id="toolbargettool-indexorid">toolBar:getTool (indexOrID)</h3>
+<p>fetch a tool from this tool bar</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>indexOrID: integer: ID or 1-based index of the tool to fetch</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>Tool: the requested tool</li>
+</ul>
+<h3 id="toolbargettoolcount-">toolBar:getToolCount ()</h3>
+<p>Return the number of menus present in this tool bar</p>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>integer: the number of menus in this tool bar</li>
+</ul>
+<h3 id="toolbarischecked-id">toolBar:isChecked (id)</h3>
+<p>Checks the checked state of a menu item by its ID</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>id: integer: ID of the menu item</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>boolean: checked state</li>
+</ul>
+<h3 id="toolbarisenabled-id">toolBar:isEnabled (id)</h3>
+<p>Checks if a tool is enabled or disabled by its ID</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>id: integer: item ID</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>boolean: enabled or disabled state</li>
+</ul>
+<h3 id="toolbarremove-index">toolBar:remove (index)</h3>
+<p>Remove a menu from this tool bar</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>index: integer: ID or 1-based index of the tool to remove</li>
+</ul>
 <h2 id="webrequest">WebRequest</h2>
 <p>Class allowing to make web requests</p>
 <h3
@@ -2734,7 +2958,7 @@ fully received.</p>
 <li>callback: function: function to call when the response is received.
 The fonction receive a WebResponse object as parameter.</li>
 </ul>
-<h3 id="properties-13">Properties</h3>
+<h3 id="properties-14">Properties</h3>
 <table>
 <thead>
 <tr class="header">
@@ -2776,7 +3000,7 @@ secure.</td>
 <ul>
 <li>string: header value, or empty string if not found</li>
 </ul>
-<h3 id="properties-14">Properties</h3>
+<h3 id="properties-15">Properties</h3>
 <table>
 <thead>
 <tr class="header">
